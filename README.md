@@ -1,5 +1,7 @@
 # 政大住宿媒合平台
 
+* 0302 Kick-off Meeting｜https://docs.google.com/document/d/1JtLwniq1omWy37leENl53GL1RzaufQAUof0A1D2yG34/edit?usp=sharing
+
 ```
 我們立志能打敗住宿組的爛系統
 讓使用平台的你成為政大租屋市場的winner
