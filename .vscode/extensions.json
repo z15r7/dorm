@@ -1,3 +1,9 @@
 {
-  "recommendations": ["Vue.volar", "Vue.vscode-typescript-vue-plugin"]
+  "recommendations": [
+    "mhutchie.git-graph",
+    "donjayamanne.githistory",
+    "dbaeumer.vscode-eslint",
+    "Vue.volar",
+    "Vue.vscode-typescript-vue-plugin"
+  ]
 }
