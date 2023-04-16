@@ -11,7 +11,7 @@
           <div class="tags">
             <span class="tag" v-for="(tag, tagIndex) in product.description.split(' ')" :key="tagIndex">{{ tag }}</span>
           </div>
-          <button class="add-to-cart" @click="addToCart(index)">加入購物車</button>
+          <button class="add-to-cart" @click="addToCart(index)">邀請加入組隊</button>
         </li>
       </ul>
     </div>
@@ -107,7 +107,7 @@
     computed: {
       filteredProducts() {
         return this.products.filter(product => {
-          return product.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+          return product.description.toLowerCase().includes(this.searchTerm.toLowerCase())
         })
       }
     },
