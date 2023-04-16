@@ -107,7 +107,7 @@
     computed: {
       filteredProducts() {
         return this.products.filter(product => {
-          return product.description.toLowerCase().includes(this.searchTerm.toLowerCase())
+          return product.description.split(' ').some(desc => desc.toLowerCase() === this.searchTerm.toLowerCase());
         })
       }
     },
