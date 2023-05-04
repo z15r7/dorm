@@ -1,120 +1,103 @@
 <template>
-    <div class="product-list">
-      <h1>室友列表</h1>
-      <div class="search-bar">
-        <label for="search">搜尋室友:</label>
-        <input type="text" id="search" v-model="searchTerm">
-      </div>
-      <ul>
-        <li v-for="(product, index) in filteredProducts" :key="index" class="product-item">
-          <h2 class="product-name">{{ product.name }}</h2>
-          <div class="tags">
-            <span class="tag" v-for="(tag, tagIndex) in product.description.split(' ')" :key="tagIndex">{{ tag }}</span>
-          </div>
-          <button class="add-to-cart" @click="addToCart(index)">邀請加入組隊</button>
-        </li>
-      </ul>
+    <div class="w-full max-w-full place-item-center flex-row flex-grow-0 bg-slate-200 space-y-4 min-h-screen">
+        <Header
+            :title="title"
+            :selected="selected"
+            :menuItem="menuItem"
+            @handleSelected="handleSelected"
+        />
+        <Body
+            :selected="selected"
+            :menuItem="menuItem"
+            :products="products"
+            @addProduct="addProduct"
+            :materials="materials"
+            @addMaterial="addMaterial"
+            :cart="cart"
+            @addCart="addCart"
+            @submitCart="submitCart"
+            @clearCart="clearCart"
+            :stock="stock"
+            @addStock="addStock"
+            @submitStock="submitStock"
+            @clearStock="clearStock"
+        />
     </div>
-  </template>
-  
-  <style>
-  .product-list {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .product-item {
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: #f2f2f2;
-    border-radius: 5px;
-  }
-  
-  .product-name {
-    margin-top: 0;
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .product-description {
-    margin-bottom: 10px;
-    font-size: 16px;
-  }
-  
-  .add-to-cart {
-    display: block;
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #4caf50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .add-to-cart:hover {
-    background-color: #3e8e41;
-  }
-  
-  .search-bar {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  input[type="text"] {
-    padding: 10px;
-    font-size: 18px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 10px;
-  }
-  
-  .tag {
-    background-color: #ddd;
-    color: #333;
-    font-size: 14px;
-    padding: 5px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    border-radius: 5px;
-  }
-  </style>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        products: [
-          { name: '室友1', description: '早睡 開冷氣 在房間講電話' },
-          { name: '室友2', description: '晚睡 不開冷氣 不在房間講電話'},
-          { name: '室友3', description: '晚睡 開冷氣 不在房間講電話'}
+</template>
+
+<script>
+import Header from '/src/components/Header.vue';
+import Body from '/src/components/Body.vue';
+
+export default {
+    data: () => ({
+        title: "政大住宿媒合",
+        section: "",
+        selected: 0,
+        showCart: false,
+        showStock: false,
+        menuItem: [
+            {name: "銷貨", link: "sale"},
+            {name: "進貨", link: "purchase"},
+            {name: "商品", link: "product"},
+            {name: "折扣", link: "discount"},
+            {name: "原料", link: "material"},
+            {name: "統計", link: "statistic"},
+            {name: "設定", link: "setting"}
         ],
+        products: [],
+        materials: [],
         cart: [],
-        searchTerm: ''
-      }
+        stock: [],
+    }),
+    methods: {
+        handleSelected: function (idx) {
+            this.selected = idx;
+        },
+        addProduct: function (item) {
+            this.products.push(item);
+        },
+        addMaterial: function (item) {
+            this.materials.push(item);
+        },
+        addCart: function (item) {
+            this.cart.push(item);
+        },
+        addStock: function (item) {
+            this.stock.push(item);
+        },
+        clearCart: function () {
+            this.cart = [];
+        },
+        clearStock: function () {
+            this.stock = [];
+        },
+        submitStock: function () {
+            this.stock.forEach((material) => {
+                this.materials.find((item) => {
+                    if (item.id === material.id)
+                        item.stock += 1;
+                });
+            });
+            this.clearStock();
+        },
+        updateStock: function () {
+        },
+        submitCart: function () {
+            this.cart.forEach((product) => {
+                this.products.find((item) => {
+                    if (item.id === product.id)
+                        item.sales += 1;
+                });
+            });
+            this.clearCart();
+        },
     },
     computed: {
-      filteredProducts() {
-        return this.products.filter(product => {
-          return product.description.split(' ').some(desc => desc.toLowerCase() === this.searchTerm.toLowerCase());
-        })
-      }
     },
-    methods: {
-      addToCart(index){
-        this.cart.push(this.products[index])
-      }
-    }
-  }
-  </script>
+    components: {
+        Header,
+        Body,
+    },
+}
+</script>
