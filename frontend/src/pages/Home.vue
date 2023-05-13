@@ -1,9 +1,10 @@
 <template>
   <div class="flex justify-center">
-    <Main />
+    <Roommates />
   </div>
 </template>
 
 <script setup>
-    import Main from '/src/components/Main.vue';
+    import Roommates from '../components/Roommates.vue';
+
 </script>
