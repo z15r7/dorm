@@ -1,7 +1,7 @@
 <template>
     <div class="border border-slate-50 shadow shadow-slate-300 bg-white p-4 h-60 w-48 rounded-md cursor-pointer flex flex-col">
         <div class="flex justify-between">
-            <p class="font-extrabold text-lg">{{ person.name }}</p>
+            <p class="font-extrabold text-lg">{{ person.name + '同學' }}</p>
             <p class="font-extrabold text-right text-xs mt-auto">{{ person.department }}</p>
         </div>
         <p class="font-bold text-xs text-zinc-500">
