@@ -15,16 +15,16 @@
                 <div class="my-5"></div>
                 <div class="w-full"></div>
                 <div class="my-0"></div>
-                <button @click="filterByGender('男')" class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 focus:bg-sky-300">#男性</button>
+                <button @click="filterByGender('男');isFiltered = true" class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 focus:bg-sky-300">#男性</button>
                 <span class="mx-2"></span> 
-                <button @click="filterByGender('女')" class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 focus:bg-sky-300">#女性</button>
+                <button @click="filterByGender('女');isFiltered = true" class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 focus:bg-sky-300">#女性</button>
                 
             </div>
         </div>
         <div class="flex justify-center">
-            <div class="flex flex-wrap w-full max-w-4xl justify-center gap-4">
-                <Person v-for="(person, index) in filteredPeople" :key="index" :person="person"/>
-            </div>
+                <div class="flex flex-wrap w-full max-w-4xl justify-center gap-4">
+                    <Person v-for="(person, index) in (isFiltered ? filteredPeople : people)" :key="index" :person="person" />
+                </div>
         </div>
     </div>
 </template>
@@ -55,6 +55,7 @@ import Person from './Person.vue';
         ],
         filteredPeople: [],
         showFilters: false,
+        isFiltered: false,
         };
        
     },
