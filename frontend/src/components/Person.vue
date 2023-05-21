@@ -5,9 +5,15 @@
             <p class="font-extrabold text-right text-xs mt-auto">{{ person.department }}</p>
         </div>
         <p class="font-bold text-xs text-zinc-500">
-            <span class = "bg-zinc-100 rounded px-2 py-0 mr-2 " v-for="(habit, index) in person.habits.split(' ')" :key="index">{{ '#' + habit }}</span>
-            <p>{{ '最遠離學校' + person.distance + '分鐘' }}</p>
+            <span class="bg-zinc-100 px-2 mr-2 inline-block">#{{ person.hygiene }}</span>
+            <span class="bg-zinc-100 px-2 mr-2 inline-block">#{{ person.air }}</span>
+            <span class="bg-zinc-100 px-2 mr-2 inline-block">#{{ person.sleep }}</span>
         </p>
+        <div class="w-full"></div>
+        <div class="flex flex-wrap place-items-center font-bold text-xs text-zinc-500">
+            <p>{{ '最遠離學校' + person.distance + '分鐘' }}</p>
+        </div>
+
         <div class="flex justify-between mt-auto">
             <p class = "text-xs mt-auto text-left text-zinc-500 ">{{'已加入' + person.team +'個隊伍'}}</p>
             <button class="border-2 rounded border-zinc-500 text-xs text-right font-bold inline-block  hover:scale-110 px-2 py-1">
