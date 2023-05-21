@@ -10,35 +10,49 @@
             </div>
         </div>
         <div class="flex justify-center my-4" v-if="showFilters">
-                <div class="flex flex-wrap place-items-center pr-32">
+                <div class="flex flex-wrap place-items-center pl-32">
                     <p class="text-xs font-bold flex-col">生理性別</p>
                     <div class="my-5"></div>
                     <div class="w-full"></div>
                     <div class="my-0"></div>
                     <button @click="filterByGender('男')" 
                     :style="{ backgroundColor: genderFilter === '男' ? '#7dd3fc' : '#f3f4f6' }"
-                    class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 focus:bg-sky-300">#男性</button>
+                    class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 ">#男性</button>
                     <span class="mx-1"></span> 
                     <button @click="filterByGender('女')" 
                     :style="{ backgroundColor: genderFilter === '女' ? '#7dd3fc' : '#f3f4f6' }"
-                    class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 focus:bg-sky-300">#女性</button>
+                    class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0">#女性</button>
                     <div class="w-full"></div>
-                    <div class="flex flex-wrap place-items-center">
-                    <p class="text-xs font-bold flex-col">衛生</p>
-                    <div class="my-5"></div>
+                    <div class="flex flex-wrap items-center">
+                        <p class="text-xs font-bold flex-col">衛生習慣</p>
+                        <div class="my-5"></div>
+                        <div class="w-full"></div>
+                        <div class="my-0"></div>
+                        <button @click="filterByHygiene('愛乾淨')" 
+                        :style="{ backgroundColor: hygieneFilter === '愛乾淨' ? '#fcd34d' : '#f3f4f6' }"
+                        class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 ">#愛乾淨</button>
+                        <span class="mx-1"></span> 
+                        <button @click="filterByHygiene('不髒有點亂')" 
+                        :style="{ backgroundColor: hygieneFilter === '不髒有點亂' ? '#fcd34d' : '#f3f4f6' }"
+                        class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 ">#不髒有點亂</button>
+                        <span class="mx-1"></span> 
+                        <button @click="filterByHygiene('衛生沒要求')" 
+                        :style="{ backgroundColor: hygieneFilter === '衛生沒要求' ? '#fcd34d' : '#f3f4f6' }"
+                        class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 ">#衛生沒要求</button>
+                    </div>
                     <div class="w-full"></div>
-                    <div class="my-0"></div>
-                    <button @click="filterByHygiene('愛乾淨')" 
-                    :style="{ backgroundColor: hygieneFilter === '愛乾淨' ? '#fcd34d' : '#f3f4f6' }"
-                    class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 focus:bg-amber-300">#愛乾淨</button>
-                    <span class="mx-1"></span> 
-                    <button @click="filterByHygiene('不髒有點亂')" 
-                    :style="{ backgroundColor: hygieneFilter === '不髒有點亂' ? '#fcd34d' : '#f3f4f6' }"
-                    class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 focus:bg-amber-300">#不髒有點亂</button>
-                    <span class="mx-1"></span> 
-                    <button @click="filterByHygiene('衛生沒要求')" 
-                    :style="{ backgroundColor: hygieneFilter === '衛生沒要求' ? '#fcd34d' : '#f3f4f6' }"
-                    class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 focus:bg-amber-300">#衛生沒要求</button>
+                    <div class="flex flex-wrap items-center">
+                        <p class="text-xs font-bold flex-col">開冷氣頻率</p>
+                        <div class="my-5"></div>
+                        <div class="w-full"></div>
+                        <div class="my-0"></div>
+                        <button @click="filterByAir('常開冷氣')" 
+                        :style="{ backgroundColor: airFilter === '常開冷氣' ? '#7dd3fc' : '#f3f4f6' }"
+                        class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 ">#常開冷氣</button>
+                        <span class="mx-1"></span> 
+                        <button @click="filterByAir('不愛開冷氣')" 
+                        :style="{ backgroundColor: airFilter === '不愛開冷氣' ? '#7dd3fc' : '#f3f4f6' }"
+                        class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 ">#不愛開冷氣</button>
                   </div>
                 </div>
             
@@ -64,13 +78,13 @@ import Person from './Person.vue';
         title: '政大室友媒合',
         people: [
             { name: '詹', department: '大四', hygiene: '愛乾淨', air: '常開冷氣', sleep: '不會打呼', distance: '3', gender: "男", team: 0 },
-            { name: '莉', department: '大二', hygiene: '不髒有點亂', air: '常開冷氣', sleep: '會打呼',  distance: '10', gender: "女", team: 0},
+            { name: '莉', department: '大二', hygiene: '不髒有點亂', air: '常開冷氣', sleep: '會打呼', distance: '10', gender: "女", team: 0},
             { name: '哈', department: '大三', hygiene: '衛生沒要求', air: '不愛開冷氣', sleep: '不會打呼', distance: '5', gender: "男", team: 0},
             { name: '石', department: '大四', hygiene: '愛乾淨', air: '常開冷氣', sleep: '不會打呼', distance: '3', gender: "男", team: 0 },
             { name: '天', department: '大三', hygiene: '不髒有點亂', air: '常開冷氣', sleep: '會打呼',  distance: '10', gender: "女", team: 0},
             { name: '路', department: '大三', hygiene: '衛生沒要求', air: '不愛開冷氣', sleep: '不會打呼', distance: '5', gender: "男", team: 0},
             { name: '湯', department: '大四', hygiene: '愛乾淨', air: '常開冷氣', sleep: '不會打呼', distance: '3', gender: "男", team: 0 },
-            { name: '鄧', department: '大二', hygiene: '不髒有點亂', air: '常開冷氣', sleep: '會打呼',  distance: '10', gender: "女", team: 0},
+            { name: '鄧', department: '大二', hygiene: '不髒有點亂', air: '常開冷氣', sleep: '會打呼', distance: '10', gender: "女", team: 0},
             { name: '珍', department: '大三', hygiene: '衛生沒要求', air: '不愛開冷氣', sleep: '不會打呼', distance: '5', gender: "男", team: 0},
             { name: '衛', department: '大四', hygiene: '愛乾淨', air: '常開冷氣', sleep: '不會打呼', distance: '3', gender: "男", team: 0 },
             { name: '妙', department: '大二', hygiene: '不髒有點亂', air: '常開冷氣', sleep: '會打呼',  distance: '10', gender: "女", team: 0},
@@ -81,6 +95,7 @@ import Person from './Person.vue';
         isFiltered: false,
         genderFilter: false,
         hygieneFilter: false,
+        airFilter: false,
     };
   },
   computed: {
@@ -93,11 +108,14 @@ import Person from './Person.vue';
       if (this.hygieneFilter) {
         filteredPeople = filteredPeople.filter(person => person.hygiene === this.hygieneFilter);
       }
+      if (this.airFilter) {
+        filteredPeople = filteredPeople.filter(person => person.air === this.airFilter);
+      }
 
       return filteredPeople;
     },
     isFiltered() {
-        return this.genderFilter || this.hygieneFilter;
+        return this.genderFilter || this.hygieneFilter || this.airFilter;
     }
   },
   methods: {
@@ -115,6 +133,13 @@ import Person from './Person.vue';
       } else {
         this.hygieneFilter = hygiene;
         
+      }
+    },
+    filterByAir(air) {
+      if (this.airFilter === air) {
+        this.airFilter = null;
+      } else {
+        this.airFilter = air;
       }
     },
   },
