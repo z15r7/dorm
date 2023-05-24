@@ -15,13 +15,25 @@
                     <p class="text-xs font-bold flex-col">生理性別</p>
                     <div class="my-5"></div>
                     <div class="w-full"></div>
-                    <button @click="filterByGender('男')" 
-                    :style="{ backgroundColor: genderFilter === '男' ? '#7dd3fc' : '#f3f4f6' }"
-                    class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 ">#男性</button>
-                    <span class="mx-1"></span> 
-                    <button @click="filterByGender('女')" 
-                    :style="{ backgroundColor: genderFilter === '女' ? '#7dd3fc' : '#f3f4f6' }"
-                    class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0">#女性</button>
+                      <Hashtag :tagName="`男`"
+                      :tagFilterMethod="filterByGender"
+                      :tagFilter="genderFilter"
+                      :tagEnableColor="`#7dd3fc`"
+                      :tagDisableColor="`#f3f4f6`"
+                      />
+                      <Hashtag :tagName="`女`"
+                      :tagFilterMethod="filterByGender"
+                      :tagFilter="genderFilter"
+                      :tagEnableColor="`#7dd3fc`"
+                      :tagDisableColor="`#f3f4f6`"
+                      />
+                      <button @click="filterByGender('男')" 
+                      :style="{ backgroundColor: genderFilter === '男' ? '#7dd3fc' : '#f3f4f6' }"
+                      class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 ">#男性</button>
+                      <span class="mx-1"></span> 
+                      <button @click="filterByGender('女')" 
+                      :style="{ backgroundColor: genderFilter === '女' ? '#7dd3fc' : '#f3f4f6' }"
+                      class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0">#女性</button>
                     <div class="w-full"></div>
                     <div class="flex flex-wrap items-center">
                         <p class="text-xs font-bold flex-col">衛生習慣</p>
@@ -172,9 +184,9 @@
 
   
   
-  <script>
+<script>
 import Person from './Person.vue';
-
+import Hashtag from './Hashtag.vue';
 
   export default {
     data() {
@@ -313,7 +325,10 @@ import Person from './Person.vue';
       }
     },
   },
-  components: {Person},
+  components: {
+    Person,
+    Hashtag
+  },
 };
 </script>
   
