@@ -12,9 +12,10 @@
       <div>
         <div class="flex justify-center w-10/12 my-4 pl-80" v-if="showFilters">
                 <div class="flex flex-wrap items-center h-fit">
-                    <p class="text-xs font-bold flex-col">生理性別</p>
-                    <div class="my-5"></div>
-                    <div class="w-full"></div>
+                    <div class="flex flex-wrap items-center">
+                      <p class="text-xs font-bold flex-col">生理性別</p>
+                      <div class="my-5"></div>
+                      <div class="w-full"></div>
                       <Hashtag :tagName="`男`"
                       :tagFilterMethod="filterByGender"
                       :tagFilter="genderFilter"
@@ -27,42 +28,43 @@
                       :tagEnableColor="`#7dd3fc`"
                       :tagDisableColor="`#f3f4f6`"
                       />
-                      <button @click="filterByGender('男')" 
-                      :style="{ backgroundColor: genderFilter === '男' ? '#7dd3fc' : '#f3f4f6' }"
-                      class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 ">#男性</button>
-                      <span class="mx-1"></span> 
-                      <button @click="filterByGender('女')" 
-                      :style="{ backgroundColor: genderFilter === '女' ? '#7dd3fc' : '#f3f4f6' }"
-                      class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0">#女性</button>
-                    <div class="w-full"></div>
-                    <div class="flex flex-wrap items-center">
-                        <p class="text-xs font-bold flex-col">衛生習慣</p>
-                        <div class="my-5"></div>
-                        <div class="w-full"></div>
-                        <button @click="filterByHygiene('愛乾淨')" 
-                        :style="{ backgroundColor: hygieneFilter === '愛乾淨' ? '#fcd34d' : '#f3f4f6' }"
-                        class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 ">#愛乾淨</button>
-                        <span class="mx-1"></span> 
-                        <button @click="filterByHygiene('不髒有點亂')" 
-                        :style="{ backgroundColor: hygieneFilter === '不髒有點亂' ? '#fcd34d' : '#f3f4f6' }"
-                        class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 ">#不髒有點亂</button>
-                        <span class="mx-1"></span> 
-                        <button @click="filterByHygiene('衛生沒要求')" 
-                        :style="{ backgroundColor: hygieneFilter === '衛生沒要求' ? '#fcd34d' : '#f3f4f6' }"
-                        class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 my-2">#衛生沒要求</button>
                     </div>
                     <div class="w-full"></div>
                     <div class="flex flex-wrap items-center">
-                        <p class="text-xs font-bold flex-col">開冷氣頻率</p>
-                        <div class="my-5"></div>
-                        <div class="w-full"></div>
-                        <button @click="filterByAir('常開冷氣')" 
-                        :style="{ backgroundColor: airFilter === '常開冷氣' ? '#7dd3fc' : '#f3f4f6' }"
-                        class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 ">#常開冷氣</button>
-                        <span class="mx-1"></span> 
-                        <button @click="filterByAir('不愛開冷氣')" 
-                        :style="{ backgroundColor: airFilter === '不愛開冷氣' ? '#7dd3fc' : '#f3f4f6' }"
-                        class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 ">#不愛開冷氣</button>
+                      <p class="text-xs font-bold flex-col">衛生習慣</p>
+                      <div class="my-5"></div>
+                      <div class="w-full"></div>
+                      <Hashtag :tagName="`愛乾淨`"
+                      :tagFilterMethod="filterByHygiene"
+                      :tagFilter="hygieneFilter"
+                      :tagEnableColor="`#fcd34d`"
+                      :tagDisableColor="`#f3f4f6`"
+                      />
+                      <Hashtag :tagName="`不髒有點亂`"
+                      :tagFilterMethod="filterByHygiene"
+                      :tagFilter="hygieneFilter"
+                      :tagEnableColor="`#fcd34d`"
+                      :tagDisableColor="`#f3f4f6`"
+                      />
+                      <Hashtag :tagName="`衛生沒要求`"
+                      :tagFilterMethod="filterByHygiene"
+                      :tagFilter="hygieneFilter"
+                      :tagEnableColor="`#fcd34d`"
+                      :tagDisableColor="`#f3f4f6`"
+                      />
+                    </div>
+                    <div class="w-full"></div>
+                    <div class="flex flex-wrap items-center">
+                      <p class="text-xs font-bold flex-col">開冷氣頻率</p>
+                      <div class="my-5"></div>
+                      <div class="w-full"></div>
+                      <button @click="filterByAir('常開冷氣')" 
+                      :style="{ backgroundColor: airFilter === '常開冷氣' ? '#7dd3fc' : '#f3f4f6' }"
+                      class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 ">#常開冷氣</button>
+                      <span class="mx-1"></span> 
+                      <button @click="filterByAir('不愛開冷氣')" 
+                      :style="{ backgroundColor: airFilter === '不愛開冷氣' ? '#7dd3fc' : '#f3f4f6' }"
+                      class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 ">#不愛開冷氣</button>
                   </div>
                   <div class="w-full"></div>
                     <div class="flex flex-wrap items-center">
