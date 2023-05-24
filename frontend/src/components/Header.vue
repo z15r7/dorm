@@ -79,11 +79,11 @@
                         <div class="my-5"></div>
                         <div class="w-full"></div>
                         <button @click="filterBySnore('不會打呼')" 
-                        :style="{ backgroundColor: snoreFilter === '不會打呼' ? '#fcd34d' : '#f3f4f6' }"
+                        :style="{ backgroundColor: snoreFilter === '不會打呼' ? '#7dd3fc' : '#f3f4f6' }"
                         class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 ">#不會打呼</button>
                         <span class="mx-1"></span>
                         <button @click="filterBySpeak('不會講夢話')" 
-                        :style="{ backgroundColor: speakFilter === '不會講夢話' ? '#fcd34d' : '#f3f4f6' }"
+                        :style="{ backgroundColor: speakFilter === '不會講夢話' ? '#7dd3fc' : '#f3f4f6' }"
                         class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 my-2">#不會講夢話</button>
                     </div>
                   
@@ -113,7 +113,7 @@
                         <div class="my-5"></div>
                         <div class="w-full"></div>
                         <button @click="filterByMouse('靜音滑鼠')" 
-                        :style="{ backgroundColor: mouseFilter === '靜音滑鼠' ? '#7dd3fc' : '#f3f4f6' }"
+                        :style="{ backgroundColor: mouseFilter === '靜音滑鼠' ? '#fcd34d' : '#f3f4f6' }"
                         class="text-xs font-bold text-zinc-500 pr-2 bg-gray-100 rounded px-2 py-0 ">#靜音滑鼠</button>
                         <span class="mx-1"></span>
                         <button @click="filterByKeyboard('靜音鍵盤')"
@@ -206,6 +206,8 @@ import Person from './Person.vue';
         phoneFilter: false,
         alarmFilter: false,
         lightFilter: false,
+        snoreFilter: false,
+        speakFilter: false,
     };
   },
   computed: {
@@ -239,11 +241,17 @@ import Person from './Person.vue';
       if (this.lightFilter) {
         filteredPeople = filteredPeople.filter(person => person.alarm === this.lightFilter);
       }
+      if (this.snoreFilter) {
+        filteredPeople = filteredPeople.filter(person => person.snore === this.snoreFilter);
+      }
+      if (this.speakFilter) {
+        filteredPeople = filteredPeople.filter(person => person.speak === this.speakFilter);
+      }
 
       return filteredPeople;
     },
     isFiltered() {
-        return this.genderFilter || this.hygieneFilter || this.airFilter || this.voiceFilter || this.mouseFilter || this.keyboardFilter || this.phoneFilter || this.alarmFilter || this.lightFilter;
+        return this.genderFilter || this.hygieneFilter || this.airFilter || this.voiceFilter || this.mouseFilter || this.keyboardFilter || this.phoneFilter || this.alarmFilter || this.lightFilter || this.snoreFilter  || this.speakFilter;
     }
   },
   methods: {
@@ -310,6 +318,20 @@ import Person from './Person.vue';
         this.lightFilter = null;
       } else {
         this.lightFilter = light;
+      }
+    },
+    filterBySnore(snore) {
+      if (this.snoreFilter === snore) {
+        this.snoreFilter = null;
+      } else {
+        this.snoreFilter = snore;
+      }
+    },
+    filterBySpeak(speak) {
+      if (this.speakFilter === speak) {
+        this.speakFilter = null;
+      } else {
+        this.speakFilter = speak;
       }
     },
   },
